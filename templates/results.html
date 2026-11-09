@@ -1,0 +1,15 @@
+
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<title>نتائج المطابقة</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<header><h2>🏦 نتائج المطابقة</h2><a href="/dashboard">مطابقة جديدة</a></header>
+<main><div class="stats">
+{% for k,v in counts.items() %}<div class="stat"><b>{{v}}</b><span>{{k}}</span></div>{% endfor %}
+</div>
+<div class="card wide"><h2>النتائج</h2>
+<a class="download" href="/download/{{job_id}}">📥 تحميل تقرير Excel</a>
+<div class="tablewrap"><table><thead><tr>
+<th>حالة</th><th>مبلغ المؤسسة</th><th>عميل المؤسسة</th><th>تاريخ المؤسسة</th>
+<th>مبلغ البنك</th><th>عميل البنك</th><th>تاريخ البنك</th><th>الدرجة</th>
+</tr></thead><tbody>
+{% for r in rows %}<tr><td>{{r.status}}</td><td>{{r.company_amount}}</td><td>{{r.company_customer}}</td><td>{{r.company_date}}</td><td>{{r.bank_amount}}</td><td>{{r.bank_customer}}</td><td>{{r.bank_date}}</td><td>{{r.score}}</td></tr>{% endfor %}
+</tbody></table></div></div></main></body></html>
